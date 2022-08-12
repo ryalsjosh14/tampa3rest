@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 //Need to add a table
 @Table(name = "order")
-public class Order {
+public class PurchaseOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Order {
 
     //Constructor
 
-    public Order(String ticker, double priceToBuy, int numberOfShares, Date orderDate, String STATUS_CODE) {
+    public PurchaseOrder(String ticker, double priceToBuy, int numberOfShares, Date orderDate, String STATUS_CODE) {
         this.ticker = ticker;
         this.priceToBuy = priceToBuy;
         this.numberOfShares = numberOfShares;
@@ -33,7 +33,7 @@ public class Order {
     }
 
     //Def constructor
-    public Order() {}
+    public PurchaseOrder() {}
 
     //getters and setter
     public int getId() {

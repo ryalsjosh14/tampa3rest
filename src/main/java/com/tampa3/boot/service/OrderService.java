@@ -1,19 +1,19 @@
 package com.tampa3.boot.service;
 
-import com.tampa3.boot.entity.Order;
+import com.tampa3.boot.entity.PurchaseOrder;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface OrderService {
     //add order
-    Order addNewOrder(Order order);
+    PurchaseOrder addNewOrder(PurchaseOrder purchaseOrder);
 
     //get order by id
-    Order getOrderById(int id);
+    PurchaseOrder getOrderById(int id);
 
     //cancel an order - delete
-    void cancelOrder(Order order);
+    void cancelOrder(PurchaseOrder purchaseOrder);
 
     //get all orders - for showing history
-    Iterable<Order> getAllOrders();
+    Iterable<PurchaseOrder> getAllOrders();
 }

@@ -1,7 +1,7 @@
 package com.tampa3.boot.service;
 
 
-import com.tampa3.boot.entity.Order;
+import com.tampa3.boot.entity.PurchaseOrder;
 import com.tampa3.boot.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,16 +15,16 @@ public class OrderServiceImpl {
     private OrderRepository dao;
 
     //add order
-    public Order addNewOrder(Order order)
+    public PurchaseOrder addNewOrder(PurchaseOrder purchaseOrder)
     {
-        order.setId(0);
-        return dao.save(order);
+        purchaseOrder.setId(0);
+        return dao.save(purchaseOrder);
     }
 
     //get order by id
-    public Order getOrderById(int id)
+    public PurchaseOrder getOrderById(int id)
     {
-        Optional<Order> orderOptional = dao.findById(id);
+        Optional<PurchaseOrder> orderOptional = dao.findById(id);
 
         if(orderOptional.isPresent())
             return orderOptional.get();
@@ -32,15 +32,15 @@ public class OrderServiceImpl {
     }
 
     //cancel an order - delete
-    public void cancelOrder(Order order)
+    public void cancelOrder(PurchaseOrder purchaseOrder)
     {
         //check status before cancelling
-        if(order.getSTATUS_CODE().equals("Pending"))
-            dao.deleteById(order.getId());
+        if(purchaseOrder.getSTATUS_CODE().equals("Pending"))
+            dao.deleteById(purchaseOrder.getId());
     }
 
     //get all orders - for showing history
-    public Iterable<Order> getAllOrders()
+    public Iterable<PurchaseOrder> getAllOrders()
     {
         return dao.findAll();
     }
