@@ -1,11 +1,18 @@
 package com.tampa3.boot.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
 //Need to add a table
 public class Order {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     //Need to add table name to all attributes
     private String ticker;//Symbol
@@ -17,7 +24,6 @@ public class Order {
 
     //Constructor
 
-
     public Order(String ticker, double priceToBuy, int numberOfShares, Date orderDate, String STATUS_CODE) {
         this.ticker = ticker;
         this.priceToBuy = priceToBuy;
@@ -28,6 +34,15 @@ public class Order {
 
     //Def constructor
     public Order() {}
+
+    //getters and setter
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTicker() {
         return ticker;
