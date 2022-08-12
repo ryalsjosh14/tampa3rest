@@ -2,7 +2,7 @@ package com.tampa3.boot.service;
 
 
 import com.tampa3.boot.entity.PurchaseOrder;
-import com.tampa3.boot.repository.OrderRepository;
+import com.tampa3.boot.repository.PurchaseOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class OrderServiceImpl {
 
     @Autowired
-    private OrderRepository dao;
+    private PurchaseOrderRepository dao;
 
     //add order
     public PurchaseOrder addNewOrder(PurchaseOrder purchaseOrder)

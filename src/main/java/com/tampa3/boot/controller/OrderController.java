@@ -15,8 +15,14 @@ public class OrderController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     public PurchaseOrder getOrderById(@PathVariable("id") int id) {
-        //return service.getOrderById(id);
+        return service.getOrderById(id);
         //placeholder
-        return new PurchaseOrder();
+        //return new PurchaseOrder();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/")
+    public Iterable<PurchaseOrder> GetAllOrders()
+    {
+        return service.getAllOrders();
     }
 }

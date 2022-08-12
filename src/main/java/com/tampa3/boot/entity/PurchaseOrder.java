@@ -5,20 +5,20 @@ import java.util.Date;
 
 @Entity
 //Need to add a table
-@Table(name = "order")
+@Table(name = "purchase_order")
 public class PurchaseOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idOrder")
+    @Column(name="id_order")
     private int id;
 
     //Need to add table name to all attributes
     @Column(name="ticker") private String ticker;//Symbol
-    @Column(name="priceToBuy") private double priceToBuy;
-    @Column(name="numberOfShares") private int numberOfShares;
-    @Column(name="orderDate") private Date orderDate;
-    @Column(name="statusCode") private String STATUS_CODE;
+    @Column(name="price_to_buy") private double priceToBuy;
+    @Column(name="number_of_shares") private int numberOfShares;
+    @Column(name="order_date") private Date orderDate;
+    @Column(name="status_code") private String STATUS_CODE;
 
 
 
