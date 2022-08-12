@@ -14,4 +14,5 @@ public class Holding {
     @Column(name="averagePrice") private Double averagePrice;
     @Column(name="lastPurchaseDate") private String lastPurchaseDate;
 
+
 }

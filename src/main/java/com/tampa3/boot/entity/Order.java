@@ -21,6 +21,7 @@ public class Order {
     @Column(name="statusCode") private String STATUS_CODE;
 
 
+
     //Constructor
 
     public Order(String ticker, double priceToBuy, int numberOfShares, Date orderDate, String STATUS_CODE) {
