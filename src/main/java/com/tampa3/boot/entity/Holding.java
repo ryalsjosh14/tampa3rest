@@ -1,13 +1,18 @@
 package com.tampa3.boot.entity;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
+@Table(name="current_holding")
 public class Holding {
 
-    private String ticker;
-    private String numShares;
-    private Double averagePrice;
-    private String lastPurchaseDate;
+    @Id
+    @GeneratedValue
+    @Column(name="ticker") private String ticker;
+
+    @Column(name="shares") private String numShares;
+    @Column(name="averagePrice") private Double averagePrice;
+    @Column(name="lastPurchaseDate") private String lastPurchaseDate;
+
 
 }

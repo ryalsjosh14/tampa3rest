@@ -1,25 +1,25 @@
 package com.tampa3.boot.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 //Need to add a table
+@Table(name = "order")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idOrder")
     private int id;
 
     //Need to add table name to all attributes
-    private String ticker;//Symbol
-    private double priceToBuy;
-    private int numberOfShares;
-    private Date orderDate;
-    private String STATUS_CODE;
+    @Column(name="ticker") private String ticker;//Symbol
+    @Column(name="priceToBuy") private double priceToBuy;
+    @Column(name="numberOfShares") private int numberOfShares;
+    @Column(name="orderDate") private Date orderDate;
+    @Column(name="statusCode") private String STATUS_CODE;
+
 
 
     //Constructor
