@@ -7,18 +7,18 @@ pipeline {
   agent any
 
   stages {
-    // stage('Test') {
-    //   steps {
-    //     sh 'chmod a+x mvnw'
-    //     sh './mvnw clean test'
-    //   }
-    // }
+    stage('Test') {
+      steps {
+        sh 'chmod a+x mvnw'
+        sh './mvnw clean test'
+      }
+    }
 
-    // stage('Build') {
-    //   steps {
-    //     sh './mvnw package'
-    //   }
-    // }
+    stage('Build') {
+      steps {
+        sh './mvnw package'
+      }
+    }
 
     stage('Build Container') {
       steps {
