@@ -9,14 +9,14 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'chmod a+x mvnw'
-        sh './mvnw clean test'
+        sh 'chmod a+x mvn'
+        sh 'mvn clean test'
       }
     }
 
     stage('Build') {
       steps {
-        sh './mvnw package'
+        sh 'mvn package'
       }
     }
 
