@@ -6,20 +6,25 @@ def dockerImageTag = "${projectName}:${version}"
 pipeline {
   agent any
 
+
+//Will build project in docker
   stages {
-    stage('Test') {
-      steps {
-        //sh 'chmod a+x mvn'
-        sh 'mvn clean test'
-      }
-    }
 
-    stage('Build') {
-      steps {
-        sh 'mvn package'
-      }
-    }
 
+//     stage('Test') {
+//       steps {
+//         //sh 'chmod a+x mvn'
+//         sh 'mvn clean test'
+//       }
+//     }
+//
+//     stage('Build') {
+//       steps {
+//         sh 'mvn package'
+//       }
+//     }
+
+//Building with docker
     stage('Build Container') {
       steps {
         sh "docker build -t ${dockerImageTag} ."
