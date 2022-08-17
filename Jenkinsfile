@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'chmod a+x mvn'
+        //sh 'chmod a+x mvn'
         sh 'mvn clean test'
       }
     }
