@@ -1,5 +1,5 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-./target/
-*.properties
+/target/
+/src/main/java/resources/
