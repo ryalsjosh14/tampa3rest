@@ -1,12 +1,13 @@
 package com.tampa3.boot.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 //Need to add a table
 @Table(name = "purchase_order")
-public class PurchaseOrder {
+public class PurchaseOrder implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
