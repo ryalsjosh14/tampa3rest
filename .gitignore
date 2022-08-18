@@ -1,4 +1,5 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-../target/
+./target/
+./src/main/resources/application.properties
