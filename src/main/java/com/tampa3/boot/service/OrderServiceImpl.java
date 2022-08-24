@@ -12,19 +12,19 @@ import java.util.Optional;
 public class OrderServiceImpl {
 
     @Autowired
-    private PurchaseOrderRepository dao;
+    private PurchaseOrderRepository por;
 
     //add order
     public PurchaseOrder addNewOrder(PurchaseOrder purchaseOrder)
     {
         purchaseOrder.setId(0);
-        return dao.save(purchaseOrder);
+        return por.save(purchaseOrder);
     }
 
     //get order by id
     public PurchaseOrder getOrderById(int id)
     {
-        Optional<PurchaseOrder> orderOptional = dao.findById(id);
+        Optional<PurchaseOrder> orderOptional = por.findById(id);
 
         if(orderOptional.isPresent())
             return orderOptional.get();
@@ -36,14 +36,12 @@ public class OrderServiceImpl {
     {
         //check status before cancelling
         if(purchaseOrder.getSTATUS_CODE().equals("Pending"))
-            dao.deleteById(purchaseOrder.getId());
+            por.deleteById(purchaseOrder.getId());
     }
 
     //get all orders - for showing history
     public Iterable<PurchaseOrder> getAllOrders()
     {
-        return dao.findAll();
+        return por.findAll();
     }
-
-
 }

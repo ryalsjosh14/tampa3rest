@@ -15,8 +15,13 @@ public class HoldingController {
     @Autowired
     private HoldingServiceImpl service;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Collection<Holding> getHoldings() {
-        return service.getHoldings();
+    @RequestMapping(method = RequestMethod.GET, value = "/{ticker}")
+    public Holding getHoldingById(@PathVariable("ticker") String ticker) {
+        return service.getHoldingById(ticker);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/")
+    public Collection<Holding> getAllHoldings() {
+        return service.getAllHoldings();
     }
 }
