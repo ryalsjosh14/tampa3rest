@@ -1,6 +1,7 @@
 package com.tampa3.boot.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="current_holdings")
@@ -9,9 +10,19 @@ public class Holding {
     @Id
     @Column(name="ticker") private String ticker;
 
-    @Column(name="shares") private String numShares;
+    @Column(name="shares") private int numShares;
     @Column(name="average_price") private Double averagePrice;
-    @Column(name="last_purchase_date") private String lastPurchaseDate;
+    @Column(name="last_purchase_date") private Date lastPurchaseDate;
+
+    //constructors
+    public Holding() { }
+
+    public Holding(String ticker, int numShares, Double averagePrice, Date lastPurchaseDate) {
+        this.ticker = ticker;
+        this.numShares = numShares;
+        this.averagePrice = averagePrice;
+        this.lastPurchaseDate = lastPurchaseDate;
+    }
 
 
     public String getTicker() {
@@ -22,11 +33,11 @@ public class Holding {
         this.ticker = ticker;
     }
 
-    public String getNumShares() {
+    public int getNumShares() {
         return numShares;
     }
 
-    public void setNumShares(String numShares) {
+    public void setNumShares(int numShares) {
         this.numShares = numShares;
     }
 
@@ -38,11 +49,11 @@ public class Holding {
         this.averagePrice = averagePrice;
     }
 
-    public String getLastPurchaseDate() {
+    public Date getLastPurchaseDate() {
         return lastPurchaseDate;
     }
 
-    public void setLastPurchaseDate(String lastPurchaseDate) {
+    public void setLastPurchaseDate(Date lastPurchaseDate) {
         this.lastPurchaseDate = lastPurchaseDate;
     }
 
