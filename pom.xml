@@ -16,6 +16,13 @@
     </parent>
 
     <dependencies>
+    <!-- Adding yahoofinance api dep -->
+        <dependency>
+        <groupId>com.yahoofinance-api</groupId>
+        <artifactId>YahooFinanceAPI</artifactId>
+        <version>3.17.0</version>
+        </dependency>
+        
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
