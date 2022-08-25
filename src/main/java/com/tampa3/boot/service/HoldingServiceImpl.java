@@ -37,12 +37,18 @@ public class HoldingServiceImpl {
 
     public Holding addNewHolding(Holding holding)
     {
-        return holding;
+        return hr.save(holding);
     }
 
     //sells holding using delete
     public void sellHolding(Holding holding)
     {
+        //Holding holding = hr.findById(ticker).get();
+        hr.deleteById(holding.getTicker());
+    }
 
+    public void deleteHoldingById(Holding holding)
+    {
+        hr.delete(holding);
     }
 }

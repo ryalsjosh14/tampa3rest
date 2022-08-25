@@ -6,6 +6,7 @@ import com.tampa3.boot.repository.PurchaseOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -17,7 +18,6 @@ public class OrderServiceImpl {
     //add order
     public PurchaseOrder addNewOrder(PurchaseOrder purchaseOrder)
     {
-        purchaseOrder.setId(0);
         return por.save(purchaseOrder);
     }
 
@@ -35,7 +35,7 @@ public class OrderServiceImpl {
     public void cancelOrder(PurchaseOrder purchaseOrder)
     {
         //check status before cancelling
-        if(purchaseOrder.getSTATUS_CODE().equals("Pending"))
+        if(purchaseOrder.getSTATUS_CODE().equals("pending"))
             por.deleteById(purchaseOrder.getId());
     }
 

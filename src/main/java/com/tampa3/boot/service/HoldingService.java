@@ -20,5 +20,7 @@ public interface HoldingService {
 
     //sell holding - delete by passing in ticker.
     // so when clicked to sell, grab ticker (id)
-    void sellHolding(String ticker);
+    void sellHolding(Holding holding);
+
+    public void deleteHoldingById(Holding holding);
 }
