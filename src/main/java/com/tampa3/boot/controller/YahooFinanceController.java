@@ -1,7 +1,7 @@
 package com.tampa3.boot.controller;
 
 
-import com.tampa3.boot.entity.myStock;
+import com.tampa3.boot.entity.MyStock;
 import org.springframework.web.bind.annotation.*;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class YahooFinanceController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{ticker}")
-    public myStock singleStock (@PathVariable("ticker") String ticker)
+    public MyStock singleStock (@PathVariable("ticker") String ticker)
     {
 
         //Neeed to input a stock ticker somehow
@@ -28,7 +28,7 @@ public class YahooFinanceController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        myStock singleStock = new myStock();
+        MyStock singleStock = new MyStock();
         BigDecimal price = stock.getQuote().getPrice();
         singleStock.setPrice(price);
         singleStock.setTicker(ticker);
@@ -40,7 +40,7 @@ public class YahooFinanceController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/all/all")
-    public List<myStock> multipleStock (@PathVariable("ticker") String ticker)
+    public List<MyStock> multipleStock ()
     {
         String[] symbols = new String[] {"INTC", "BABA", "TSLA", "AIR.PA", "YHOO"};
 
@@ -50,11 +50,11 @@ public class YahooFinanceController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        List<myStock> stonks = new ArrayList<>();
+        List<MyStock> stonks = new ArrayList<>();
 
-        myStock x;
+        MyStock x;
         for (String s: symbols){
-            x = new myStock();
+            x = new MyStock();
             x.setTicker(s);
             try {
                 x.setPrice(YahooFinance.get(s).getQuote().getPrice());
