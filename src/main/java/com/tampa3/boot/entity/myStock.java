@@ -3,7 +3,7 @@ package com.tampa3.boot.entity;
 import javax.persistence.Entity;
 import java.math.BigDecimal;
 
-@Entity
+//@Entity
 
 public class myStock {
 
