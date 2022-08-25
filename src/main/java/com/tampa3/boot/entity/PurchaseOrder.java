@@ -24,7 +24,6 @@ public class PurchaseOrder implements Serializable {
 
 
     //Constructor
-
     public PurchaseOrder(String ticker, double priceToBuy, int numberOfShares, Date orderDate, String STATUS_CODE) {
         this.ticker = ticker;
         this.priceToBuy = priceToBuy;

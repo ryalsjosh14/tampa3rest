@@ -33,12 +33,10 @@ public class HoldingController {
         return service.addNewHolding(holding);
     }
 
-    //this is not working?
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{ticker}")
-    public void sellHolding(@PathVariable String ticker)
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/")
+    public void sellHolding(@RequestBody Holding holding)
     {
-        Holding holding = getHoldingById(ticker);
-        System.out.println(holding.getTicker());
+        //Holding holding = getHoldingById(ticker);
         service.sellHolding(holding);
     }
 }
