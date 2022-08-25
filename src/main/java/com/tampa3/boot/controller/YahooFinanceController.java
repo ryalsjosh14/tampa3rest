@@ -33,7 +33,7 @@ public class YahooFinanceController {
         return stock;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    @RequestMapping(method = RequestMethod.GET, value = "/all/all")
     public Map<String, Stock> multipleStock (@PathVariable("ticker") String ticker)
     {
         String[] symbols = new String[] {"INTC", "BABA", "TSLA", "AIR.PA", "YHOO"};
