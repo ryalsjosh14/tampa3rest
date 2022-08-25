@@ -42,7 +42,7 @@ public class YahooFinanceController {
     @RequestMapping(method = RequestMethod.GET, value = "/all/all")
     public List<MyStock> multipleStock ()
     {
-        String[] symbols = new String[] {"INTC", "BABA", "TSLA", "AIR.PA", "YHOO"};
+        String[] symbols = new String[] {"INTC","MSFT", "GOOG", "BABA", "TSLA", "AIR.PA", "YHOO", "AAPL", "A", "AMZN", "ALL", "AAN", "ABB", "AA", "AAC"};
 
         Map<String, Stock> stocks = null; // single request
         try {
