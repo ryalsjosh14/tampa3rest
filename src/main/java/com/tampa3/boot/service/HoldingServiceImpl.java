@@ -37,14 +37,23 @@ public class HoldingServiceImpl {
 
     public Holding addNewHolding(Holding holding)
     {
-        return hr.save(holding);
+        //TODO - average price
+        Holding exisitingHolding = getHoldingById(holding.getTicker());
+        int totalShares = holding.getNumShares() + exisitingHolding.getNumShares();
+        System.out.println(totalShares);
+
+        Holding newHolding = new Holding(holding.getTicker(), totalShares, holding.getAveragePrice(), holding.getLastPurchaseDate());
+
+        return hr.save(newHolding);
     }
 
     //sells holding using delete
     public void sellHolding(Holding holding)
     {
-        //Holding holding = hr.findById(ticker).get();
-        hr.deleteById(holding.getTicker());
+        if(holding != null)
+            hr.deleteById(holding.getTicker());
+        else
+            System.out.println("No such stock");
     }
 
     public void deleteHoldingById(Holding holding)
