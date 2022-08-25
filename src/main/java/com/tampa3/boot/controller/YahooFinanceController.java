@@ -1,12 +1,15 @@
 package com.tampa3.boot.controller;
 
 
+import com.tampa3.boot.entity.myStock;
 import org.springframework.web.bind.annotation.*;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -15,7 +18,7 @@ import java.util.Map;
 public class YahooFinanceController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/{ticker}")
-    public Stock singleStock (@PathVariable("ticker") String ticker)
+    public myStock singleStock (@PathVariable("ticker") String ticker)
     {
 
         //Neeed to input a stock ticker somehow
@@ -25,16 +28,19 @@ public class YahooFinanceController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        myStock singleStock = new myStock();
         BigDecimal price = stock.getQuote().getPrice();
+        singleStock.setPrice(price);
+        singleStock.setTicker(ticker);
 //        BigDecimal change = stock.getQuote().getChangeInPercent();
 //        BigDecimal peg = stock.getStats().getPeg();
 //        BigDecimal dividend = stock.getDividend().getAnnualYieldPercent();
 
-        return stock;
+        return singleStock;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/all/all")
-    public Map<String, Stock> multipleStock (@PathVariable("ticker") String ticker)
+    public List<myStock> multipleStock (@PathVariable("ticker") String ticker)
     {
         String[] symbols = new String[] {"INTC", "BABA", "TSLA", "AIR.PA", "YHOO"};
 
@@ -44,10 +50,21 @@ public class YahooFinanceController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Stock intel = stocks.get("INTC");
-        Stock airbus = stocks.get("AIR.PA");
+        List<myStock> stonks = new ArrayList<>();
 
-        return stocks;
+        myStock x;
+        for (String s: symbols){
+            x = new myStock();
+            x.setTicker(s);
+            try {
+                x.setPrice(YahooFinance.get(s).getQuote().getPrice());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stonks.add(x);
+        }
+
+        return stonks;
     }
 
 
