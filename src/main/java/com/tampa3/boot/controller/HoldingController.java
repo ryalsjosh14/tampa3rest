@@ -36,7 +36,6 @@ public class HoldingController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/")
     public void sellHolding(@RequestBody Holding holding)
     {
-        //Holding holding = getHoldingById(ticker);
         service.sellHolding(holding);
     }
 }

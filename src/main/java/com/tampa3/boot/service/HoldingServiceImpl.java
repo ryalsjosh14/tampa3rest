@@ -38,8 +38,6 @@ public class HoldingServiceImpl {
 
     public Holding addNewHolding(Holding holding)
     {
-        //TODO - calc average price
-
         //check if the holding already exists
         Optional<Holding> opt = hr.findById(holding.getTicker());
 
@@ -48,9 +46,16 @@ public class HoldingServiceImpl {
         {
             Holding existingHolding = hr.findById(holding.getTicker()).get();
 
+            //update total shares
             int totalShares = holding.getNumShares() + existingHolding.getNumShares();
+            //update money spent
+            double moneySpent = holding.getMoneySpent() + existingHolding.getMoneySpent();
+            //update average price
+            double avgPrice = moneySpent / totalShares;
 
-            Holding newHolding = new Holding(holding.getTicker(), totalShares, holding.getAveragePrice(), holding.getLastPurchaseDate());
+
+            Holding newHolding = new Holding(holding.getTicker(), totalShares, avgPrice,
+                    holding.getLastPurchaseDate(), moneySpent);
 
             return hr.save(newHolding);
         }
@@ -71,7 +76,8 @@ public class HoldingServiceImpl {
             Holding existingHolding = hr.findById(holding.getTicker()).get();
 
             int totalShares = existingHolding.getNumShares() - holding.getNumShares();
-            Holding newHolding = new Holding(holding.getTicker(), totalShares, holding.getAveragePrice(), holding.getLastPurchaseDate());
+            Holding newHolding = new Holding(holding.getTicker(), totalShares, holding.getAveragePrice(),
+                    holding.getLastPurchaseDate(), holding.getMoneySpent());
 
             if(totalShares > 0)
                 hr.save(newHolding);

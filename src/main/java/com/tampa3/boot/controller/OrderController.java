@@ -36,11 +36,10 @@ public class OrderController {
         return service.addNewOrder(purchaseOrder);
     }
 
-    //cancel an order - so delete it
+    //cancel an order - so delete it. mostly used for testing
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete/{id}")
     public void cancelOrder(@PathVariable("id") int id) {
         PurchaseOrder purchaseOrder = getOrderById(id);
-        System.out.println(purchaseOrder.getTicker());
         service.cancelOrder(purchaseOrder);
    }
 

@@ -13,15 +13,17 @@ public class Holding {
     @Column(name="shares") private int numShares;
     @Column(name="average_price") private Double averagePrice;
     @Column(name="last_purchase_date") private Date lastPurchaseDate;
+    @Column(name="money_spent") private double moneySpent;
 
     //constructors
     public Holding() { }
 
-    public Holding(String ticker, int numShares, Double averagePrice, Date lastPurchaseDate) {
+    public Holding(String ticker, int numShares, Double averagePrice, Date lastPurchaseDate, double moneySpent) {
         this.ticker = ticker;
         this.numShares = numShares;
         this.averagePrice = averagePrice;
         this.lastPurchaseDate = lastPurchaseDate;
+        this.moneySpent = moneySpent;
     }
 
 
@@ -57,7 +59,13 @@ public class Holding {
         this.lastPurchaseDate = lastPurchaseDate;
     }
 
+    public double getMoneySpent() {
+        return moneySpent;
+    }
 
+    public void setMoneySpent(double moneySpent) {
+        this.moneySpent = moneySpent;
+    }
 
 
 }

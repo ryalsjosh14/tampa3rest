@@ -34,7 +34,10 @@ public class OrderServiceImpl {
            System.out.println("inserted successfully");
 
             //create holding object to pass to holding table
-            Holding holding = new Holding(purchaseOrder.getTicker(), purchaseOrder.getNumberOfShares(), purchaseOrder.getPriceToBuy(), purchaseOrder.getOrderDate());
+            //pass in price to buy as place holder for avgPrice
+            double moneySpent = purchaseOrder.getPriceToBuy() * purchaseOrder.getNumberOfShares();
+            Holding holding = new Holding(purchaseOrder.getTicker(), purchaseOrder.getNumberOfShares(), purchaseOrder.getPriceToBuy(),
+                    purchaseOrder.getOrderDate(), moneySpent);
 
             if(purchaseOrder.getSTATUS_CODE().toLowerCase().equals("buy")) //send buy order to holding
             {
