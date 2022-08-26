@@ -76,8 +76,11 @@ public class HoldingServiceImpl {
             Holding existingHolding = hr.findById(holding.getTicker()).get();
 
             int totalShares = existingHolding.getNumShares() - holding.getNumShares();
-            Holding newHolding = new Holding(holding.getTicker(), totalShares, holding.getAveragePrice(),
-                    holding.getLastPurchaseDate(), holding.getMoneySpent());
+            double moneySpent = existingHolding.getMoneySpent() - holding.getMoneySpent();
+            double avgPrice = moneySpent / totalShares;
+
+            Holding newHolding = new Holding(holding.getTicker(), totalShares, avgPrice,
+                    holding.getLastPurchaseDate(), moneySpent);
 
             if(totalShares > 0)
                 hr.save(newHolding);
