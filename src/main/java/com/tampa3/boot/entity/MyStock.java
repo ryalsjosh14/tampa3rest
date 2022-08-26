@@ -9,10 +9,21 @@ public class MyStock {
     public String ticker;
     public BigDecimal price;
 
+    public String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public MyStock(){} //Empty cons
-    public MyStock(String ticker, BigDecimal price) {
+    public MyStock(String ticker, BigDecimal price, String name) {
         this.ticker = ticker;
         this.price = price;
+        this.name = name;
     }
 
     public String getTicker() {

@@ -30,8 +30,11 @@ public class YahooFinanceController {
         }
         MyStock singleStock = new MyStock();
         BigDecimal price = stock.getQuote().getPrice();
+        String name = stock.getName();
+        singleStock.setName(name);
         singleStock.setPrice(price);
         singleStock.setTicker(ticker);
+
 //        BigDecimal change = stock.getQuote().getChangeInPercent();
 //        BigDecimal peg = stock.getStats().getPeg();
 //        BigDecimal dividend = stock.getDividend().getAnnualYieldPercent();
@@ -57,6 +60,7 @@ public class YahooFinanceController {
             x = new MyStock();
             x.setTicker(s);
             try {
+                x.setName(YahooFinance.get(s).getName());
                 x.setPrice(YahooFinance.get(s).getQuote().getPrice());
             } catch (IOException e) {
                 throw new RuntimeException(e);
